@@ -2,9 +2,9 @@
 {
   public class Generator
   {
-    private readonly FolderCreator myFolderCreator = new FolderCreator();
-    private readonly FileCreator myFileCreator = new FileCreator();
     private readonly FileContentGenerator myFileContentGenerator = new FileContentGenerator();
+    private readonly FileCreator myFileCreator = new FileCreator();
+    private readonly FolderCreator myFolderCreator = new FolderCreator();
 
     public void Generate(
       string rootFolder,
@@ -14,7 +14,14 @@
       int errorsCount,
       int warningsCount)
     {
-      GenerateSafety(rootFolder, filesInEachFolder, subfoldersInEachFolder, nestingLevel, errorsCount, warningsCount, true);
+      GenerateSafety(
+        rootFolder,
+        filesInEachFolder,
+        subfoldersInEachFolder,
+        nestingLevel,
+        errorsCount,
+        warningsCount,
+        true);
     }
 
     private void GenerateSafety(
@@ -43,7 +50,14 @@
       {
         var folderPath = rootFolder + @"\folder" + nestingLevel + "_" + i;
         myFolderCreator.Create(folderPath);
-        GenerateSafety(folderPath, filesInEachFolder, subfoldersInEachFolder, nestingLevel - 1, errorsCount, warningsCount, false);
+        GenerateSafety(
+          folderPath,
+          filesInEachFolder,
+          subfoldersInEachFolder,
+          nestingLevel - 1,
+          errorsCount,
+          warningsCount,
+          false);
       }
     }
   }

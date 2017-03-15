@@ -2,7 +2,7 @@
 
 namespace FilesGenerator.Logic
 {
-  class FolderCreator
+  internal class FolderCreator
   {
     public void Init(string path)
     {
