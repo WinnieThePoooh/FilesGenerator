@@ -26,22 +26,22 @@
       int warningsCount,
       bool shouldInit)
     {
-      if (nestingLevel < 0)
-        return;
-
       if (shouldInit)
         myFolderCreator.Init(rootFolder);
 
       for (var i = 0; i < filesInEachFolder; i++)
       {
-        var filePath = rootFolder + @"\file" + i + ".cs";
+        var filePath = rootFolder + @"\file" + nestingLevel + "_" + i + ".cs";
         var content = myFileContentGenerator.Generate(errorsCount, warningsCount);
         myFileCreator.Create(filePath, content);
       }
 
+      if (nestingLevel == 0)
+        return;
+
       for (var i = 0; i < subfoldersInEachFolder; i++)
       {
-        var folderPath = rootFolder + @"\folder" + i;
+        var folderPath = rootFolder + @"\folder" + nestingLevel + "_" + i;
         myFolderCreator.Create(folderPath);
         GenerateSafety(folderPath, filesInEachFolder, subfoldersInEachFolder, nestingLevel - 1, errorsCount, warningsCount, false);
       }

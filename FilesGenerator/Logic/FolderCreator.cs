@@ -6,13 +6,15 @@ namespace FilesGenerator.Logic
   {
     public void Init(string path)
     {
-      Directory.Delete(path, true);
-      Directory.CreateDirectory(path);
+      if (Directory.Exists(path))
+        Directory.Delete(path, true);
+
+      Create(path);
     }
 
     public void Create(string path)
     {
-      
+      Directory.CreateDirectory(path);
     }
   }
 }
