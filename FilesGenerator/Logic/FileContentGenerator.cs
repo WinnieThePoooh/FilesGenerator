@@ -1,10 +1,31 @@
-﻿namespace FilesGenerator.Logic
+﻿using System.Text;
+
+namespace FilesGenerator.Logic
 {
   internal class FileContentGenerator
   {
-    public string Generate(int errorsCount, int warningsCount)
+    public string Generate(string classSuffix, int errorsCount, int warningsCount)
     {
-      return "asdf";
+      var builder = new StringBuilder();
+      builder.AppendLine("namespace GeneratedFiles");
+      builder.AppendLine("{");
+      builder.AppendLine("  class MyClass" + classSuffix);
+      builder.AppendLine("  {");
+      builder.AppendLine("    public MyMethod()");
+      builder.AppendLine("    {");
+      for (int i = 0; i < warningsCount; i++)
+      {
+        builder.AppendLine("      var myWarning" + i + " = 0;");
+      }
+      for (int i = 0; i < errorsCount; i++)
+      {
+        builder.AppendLine("      myError" + i + ";");
+      }
+      builder.AppendLine("    }");
+      builder.AppendLine("  }");
+      builder.AppendLine("]");
+
+      return builder.ToString();
     }
   }
 }
