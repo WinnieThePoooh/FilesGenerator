@@ -43,6 +43,7 @@
 
       for (var i = 0; i < filesInEachFolder; i++)
       {
+        var localClassNameSuffix = nestingLevel + "_" + i + "_"  + classNameSuffix;
         var filePath = rootFolder + @"\file" + localClassNameSuffix + ".cs";
         var content = myFileContentGenerator.Generate(localClassNameSuffix, errorsCount, warningsCount, todoCount);
         myFileCreator.Create(filePath, content);
