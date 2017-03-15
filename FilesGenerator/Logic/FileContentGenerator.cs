@@ -7,11 +7,11 @@ namespace FilesGenerator.Logic
     public string Generate(string classSuffix, int errorsCount, int warningsCount)
     {
       var builder = new StringBuilder();
-      builder.AppendLine("namespace GeneratedFiles");
+      builder.AppendLine("namespace GeneratedFiles" + classSuffix);
       builder.AppendLine("{");
       builder.AppendLine("  class MyClass" + classSuffix);
       builder.AppendLine("  {");
-      builder.AppendLine("    public MyMethod()");
+      builder.AppendLine("    public void MyMethod()");
       builder.AppendLine("    {");
       for (int i = 0; i < warningsCount; i++)
       {
