@@ -1,6 +1,6 @@
 ﻿namespace FilesGenerator.Logic
 {
-  class FileContentGenerator
+  internal class FileContentGenerator
   {
     public string Generate(int errorsCount, int warningsCount)
     {
