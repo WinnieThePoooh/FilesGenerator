@@ -4,7 +4,7 @@ namespace FilesGenerator.Logic
 {
   internal class FileContentGenerator
   {
-    public string Generate(string classSuffix, int errorsCount, int warningsCount)
+    public string Generate(string classSuffix, int errorsCount, int warningsCount, int todoCount)
     {
       var builder = new StringBuilder();
       builder.AppendLine("namespace GeneratedFiles" + classSuffix);
@@ -20,6 +20,10 @@ namespace FilesGenerator.Logic
       for (int i = 0; i < errorsCount; i++)
       {
         builder.AppendLine("      myError" + i + ";");
+      }
+      for (int i = 0; i < todoCount; i++)
+      {
+        builder.AppendLine("      //todo " + i + "");
       }
       builder.AppendLine("    }");
       builder.AppendLine("  }");

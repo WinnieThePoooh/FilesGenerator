@@ -12,7 +12,8 @@
       int subfoldersInEachFolder,
       int nestingLevel,
       int errorsCount,
-      int warningsCount)
+      int warningsCount,
+      int todoCount)
     {
       GenerateSafety(
         rootFolder,
@@ -21,6 +22,7 @@
         nestingLevel,
         errorsCount,
         warningsCount,
+        todoCount,
         true);
     }
 
@@ -31,6 +33,7 @@
       int nestingLevel,
       int errorsCount,
       int warningsCount,
+      int todoCount,
       bool shouldInit)
     {
       if (shouldInit)
@@ -40,7 +43,7 @@
       {
         var classNameSuffix = nestingLevel + "_" + i;
         var filePath = rootFolder + @"\file" + classNameSuffix + ".cs";
-        var content = myFileContentGenerator.Generate(classNameSuffix, errorsCount, warningsCount);
+        var content = myFileContentGenerator.Generate(classNameSuffix, errorsCount, warningsCount, todoCount);
         myFileCreator.Create(filePath, content);
       }
 
@@ -58,6 +61,7 @@
           nestingLevel - 1,
           errorsCount,
           warningsCount,
+          todoCount,
           false);
       }
     }
