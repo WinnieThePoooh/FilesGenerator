@@ -23,7 +23,8 @@
         errorsCount,
         warningsCount,
         todoCount,
-        true);
+        true,
+        string.Empty);
     }
 
     private void GenerateSafety(
@@ -34,16 +35,16 @@
       int errorsCount,
       int warningsCount,
       int todoCount,
-      bool shouldInit)
+      bool shouldInit,
+      string classNameSuffix)
     {
       if (shouldInit)
         myFolderCreator.Init(rootFolder);
 
       for (var i = 0; i < filesInEachFolder; i++)
       {
-        var classNameSuffix = nestingLevel + "_" + i;
-        var filePath = rootFolder + @"\file" + classNameSuffix + ".cs";
-        var content = myFileContentGenerator.Generate(classNameSuffix, errorsCount, warningsCount, todoCount);
+        var filePath = rootFolder + @"\file" + localClassNameSuffix + ".cs";
+        var content = myFileContentGenerator.Generate(localClassNameSuffix, errorsCount, warningsCount, todoCount);
         myFileCreator.Create(filePath, content);
       }
 
@@ -52,7 +53,8 @@
 
       for (var i = 0; i < subfoldersInEachFolder; i++)
       {
-        var folderPath = rootFolder + @"\folder" + nestingLevel + "_" + i;
+        var folderSuffix = nestingLevel + "_" + i;
+        var folderPath = rootFolder + @"\folder" + folderSuffix;
         myFolderCreator.Create(folderPath);
         GenerateSafety(
           folderPath,
@@ -62,7 +64,8 @@
           errorsCount,
           warningsCount,
           todoCount,
-          false);
+          false,
+          classNameSuffix + folderSuffix);
       }
     }
   }
