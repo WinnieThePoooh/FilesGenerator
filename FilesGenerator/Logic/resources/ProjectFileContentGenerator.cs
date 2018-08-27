@@ -7,13 +7,13 @@ namespace FilesGenerator.Logic.resources
     {
         private readonly string _projFileContent;
         private readonly string _resourceFileTemplate;
-        private string _resourceFileDesignerTemplate;
+        private readonly string _resourceFileDesignerTemplate;
 
         public ProjectFileContentGenerator()
         {
-            _projFileContent = new ResourceReader().Read("FilesGenerator.Logic.resources.ProjFileTemplate.txt");
-            _resourceFileTemplate = new ResourceReader().Read("FilesGenerator.Logic.resources.ResourceFileTemplate.txt");
-            _resourceFileDesignerTemplate = new ResourceReader().Read("FilesGenerator.Logic.resources.ResourceFileDesignerTemplate.txt");
+            _projFileContent = new ResourceReader().Read(GetTemplateFileName("ProjFileTemplate"));
+            _resourceFileTemplate = new ResourceReader().Read(GetTemplateFileName("ResourceFileTemplate"));
+            _resourceFileDesignerTemplate = new ResourceReader().Read(GetTemplateFileName("ResourceFileDesignerTemplate"));
         }
 
         public IEnumerable<GeneratedFile> Generate(string classSuffix)
@@ -37,6 +37,11 @@ namespace FilesGenerator.Logic.resources
                 new GeneratedFile(resourceFileName + ".resx", resourceFileContent),
                 new GeneratedFile(resourceFileName + ".Designer.cs", resourceFileDesignerContent)
             };
+        }
+
+        private static string GetTemplateFileName(string name)
+        {
+            return $"FilesGenerator.Logic.resources.{name}.txt";
         }
     }
 }
