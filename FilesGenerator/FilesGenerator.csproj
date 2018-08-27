@@ -56,7 +56,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Logic\resources\ProjFileContent.txt" />
+    <EmbeddedResource Include="Logic\resources\ProjFileTemplate.txt" />
+    <EmbeddedResource Include="Logic\resources\ResourceFileTemplate.txt" />
+    <EmbeddedResource Include="Logic\resources\ResourceFileDesignerTemplate.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
