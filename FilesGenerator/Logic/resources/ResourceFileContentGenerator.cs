@@ -63,7 +63,8 @@ namespace FilesGenerator.Logic.resources
                 .Replace("$resourceItemName", resourceItemName)
                 .Replace("$resourceItemValue", "resource" + classSuffix + "Value");
             var resourceFileDesignerContent = _resourceFileDesignerTemplate
-                .Replace("$resourceItemName", resourceItemName);
+                .Replace("$resourceItemName", resourceItemName)
+                .Replace("$resourceFileName", resourceFileName);
             
             var projFileName = "proj" + classSuffix + ".csproj";
             var projFileFullName = folder + @"\" + projFileName;
