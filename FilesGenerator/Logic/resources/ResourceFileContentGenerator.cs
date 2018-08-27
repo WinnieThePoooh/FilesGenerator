@@ -21,8 +21,10 @@ namespace FilesGenerator.Logic.resources
             _generatedProjects = new List<GeneratedProject>();
         }
         
-        public GeneratedFile GenerateAfter()
+        public IEnumerable<GeneratedFile> GenerateAfter(string rootFolder)
         {
+            var uberProject = Generate("UberProject", rootFolder);
+            
             var projects = new StringBuilder();
             var projectsConfigs = new StringBuilder();
             foreach (var proj in _generatedProjects)
@@ -36,7 +38,10 @@ namespace FilesGenerator.Logic.resources
             var content = _solutionFileTemplate
                 .Replace("$projects", projects.ToString())
                 .Replace("$projectConfigs", projectsConfigs.ToString());
-            return new GeneratedFile("solutionGenerated.sln", content);
+            var res = new List<GeneratedFile>();
+            res.AddRange(uberProject);
+            res.Add(new GeneratedFile("solutionGenerated.sln", content));
+            return res;
         }
 
         public IEnumerable<GeneratedFile> Generate(string classSuffix, string folder)

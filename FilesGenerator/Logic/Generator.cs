@@ -25,8 +25,8 @@
         true,
         string.Empty);
       
-      var file = _fileContentGenerator.GenerateAfter();
-      if (file != null)
+      var files = _fileContentGenerator.GenerateAfter(rootFolder);
+      foreach (var file in files)
         CreateFile(rootFolder, file);
     }
 

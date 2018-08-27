@@ -16,9 +16,9 @@ namespace FilesGenerator.Logic.swea
       _todoCount = todoCount;
     }
     
-    public GeneratedFile GenerateAfter()
+    public IEnumerable<GeneratedFile> GenerateAfter(string rootFolder)
     {
-      return null;
+      yield break;
     }
     
     public IEnumerable<GeneratedFile> Generate(string classSuffix, string folder)
