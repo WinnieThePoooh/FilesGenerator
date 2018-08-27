@@ -15,7 +15,13 @@ namespace FilesGenerator.Logic.swea
       _warningsCount = warningsCount;
       _todoCount = todoCount;
     }
-    public IEnumerable<GeneratedFile> Generate(string classSuffix)
+    
+    public GeneratedFile GenerateAfter()
+    {
+      return null;
+    }
+    
+    public IEnumerable<GeneratedFile> Generate(string classSuffix, string folder)
     {
       var builder = new StringBuilder();
       builder.AppendLine("namespace GeneratedFiles" + classSuffix);

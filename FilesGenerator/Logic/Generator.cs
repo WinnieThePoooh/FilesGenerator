@@ -10,6 +10,7 @@
     {
       _fileContentGenerator = fileContentGenerator;
     }
+    
     public void Generate(
       string rootFolder,
       int filesInEachFolder,
@@ -23,6 +24,10 @@
         nestingLevel,
         true,
         string.Empty);
+      
+      var file = _fileContentGenerator.GenerateAfter();
+      if (file != null)
+        CreateFile(rootFolder, file);
     }
 
     private void GenerateSafety(
@@ -40,11 +45,10 @@
       {
         var localClassNameSuffix = nestingLevel + "_" + i + "_"  + classNameSuffix;
         
-        var files = _fileContentGenerator.Generate(localClassNameSuffix);
+        var files = _fileContentGenerator.Generate(localClassNameSuffix, rootFolder);
         foreach (var file in files)
         {
-          var filePath = rootFolder + @"\" + file.Name;
-          myFileCreator.Create(filePath, file.Content);
+          CreateFile(rootFolder, file);
         }
       }
 
@@ -64,6 +68,12 @@
           false,
           classNameSuffix + folderSuffix);
       }
+    }
+
+    private void CreateFile(string rootFolder, GeneratedFile file)
+    {
+      var filePath = rootFolder + @"\" + file.Name;
+      myFileCreator.Create(filePath, file.Content);
     }
   }
 }

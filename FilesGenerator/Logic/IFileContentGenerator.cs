@@ -4,6 +4,7 @@ namespace FilesGenerator.Logic
 {
     public interface IFileContentGenerator
     {
-        IEnumerable<GeneratedFile> Generate(string classSuffix);
+        IEnumerable<GeneratedFile> Generate(string classSuffix, string folder);
+        GeneratedFile GenerateAfter();
     }
 }

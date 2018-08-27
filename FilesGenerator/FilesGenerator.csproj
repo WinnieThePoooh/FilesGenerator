@@ -47,7 +47,7 @@
     <Compile Include="Logic\Generator.cs" />
     <Compile Include="Logic\IFileContentGenerator.cs" />
     <Compile Include="Logic\ResourceReader.cs" />
-    <Compile Include="Logic\resources\ProjectFileContentGenerator.cs" />
+    <Compile Include="Logic\resources\ResourceFileContentGenerator.cs" />
     <Compile Include="Logic\swea\FileContentGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +59,7 @@
     <EmbeddedResource Include="Logic\resources\ProjFileTemplate.txt" />
     <EmbeddedResource Include="Logic\resources\ResourceFileTemplate.txt" />
     <EmbeddedResource Include="Logic\resources\ResourceFileDesignerTemplate.txt" />
+    <EmbeddedResource Include="Logic\resources\SlnFileTemplate.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
