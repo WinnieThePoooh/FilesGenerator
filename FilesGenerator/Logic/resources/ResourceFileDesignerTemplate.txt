@@ -1,4 +1,4 @@
-namespace Namespace1_0_ {
+namespace Namespace$resourceFileName {
     using System;
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
@@ -21,7 +21,7 @@ namespace Namespace1_0_ {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Namespace1_0_.res1_0_", typeof(res1_0_).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Namespace$resourceFileName.$resourceFileName", typeof($resourceFileName).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
