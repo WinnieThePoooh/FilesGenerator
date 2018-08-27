@@ -1,4 +1,5 @@
 ﻿using FilesGenerator.Logic;
+using FilesGenerator.Logic.swea;
 
 namespace FilesGenerator
 {
@@ -6,9 +7,9 @@ namespace FilesGenerator
   {
     private static void Main(string[] args)
     {
-      var generator = new Generator();
+      var generator = new Generator(new FileContentGenerator(100, 100, 0));
       var rootFolder = @"C:\logs\generated";
-      generator.Generate(rootFolder, 3, 3, 8, 100, 100, 0);
+      generator.Generate(rootFolder, 2, 2, 2);
     }
   }
 }

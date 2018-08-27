@@ -2,27 +2,25 @@
 {
   public class Generator
   {
-    private readonly FileContentGenerator myFileContentGenerator = new FileContentGenerator();
+    private readonly IFileContentGenerator _fileContentGenerator;
     private readonly FileCreator myFileCreator = new FileCreator();
     private readonly FolderCreator myFolderCreator = new FolderCreator();
 
+    public Generator(IFileContentGenerator fileContentGenerator)
+    {
+      _fileContentGenerator = fileContentGenerator;
+    }
     public void Generate(
       string rootFolder,
       int filesInEachFolder,
       int subfoldersInEachFolder,
-      int nestingLevel,
-      int errorsCount,
-      int warningsCount,
-      int todoCount)
+      int nestingLevel)
     {
       GenerateSafety(
         rootFolder,
         filesInEachFolder,
         subfoldersInEachFolder,
         nestingLevel,
-        errorsCount,
-        warningsCount,
-        todoCount,
         true,
         string.Empty);
     }
@@ -32,9 +30,6 @@
       int filesInEachFolder,
       int subfoldersInEachFolder,
       int nestingLevel,
-      int errorsCount,
-      int warningsCount,
-      int todoCount,
       bool shouldInit,
       string classNameSuffix)
     {
@@ -45,7 +40,7 @@
       {
         var localClassNameSuffix = nestingLevel + "_" + i + "_"  + classNameSuffix;
         var filePath = rootFolder + @"\file" + localClassNameSuffix + ".cs";
-        var content = myFileContentGenerator.Generate(localClassNameSuffix, errorsCount, warningsCount, todoCount);
+        var content = _fileContentGenerator.Generate(localClassNameSuffix);
         myFileCreator.Create(filePath, content);
       }
 
@@ -62,9 +57,6 @@
           filesInEachFolder,
           subfoldersInEachFolder,
           nestingLevel - 1,
-          errorsCount,
-          warningsCount,
-          todoCount,
           false,
           classNameSuffix + folderSuffix);
       }

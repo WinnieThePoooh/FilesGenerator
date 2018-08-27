@@ -41,10 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\FileContentGenerator.cs" />
     <Compile Include="Logic\FileCreator.cs" />
     <Compile Include="Logic\FolderCreator.cs" />
     <Compile Include="Logic\Generator.cs" />
+    <Compile Include="Logic\IFileContentGenerator.cs" />
+    <Compile Include="Logic\swea\FileContentGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
