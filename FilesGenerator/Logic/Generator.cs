@@ -40,9 +40,12 @@
       {
         var localClassNameSuffix = nestingLevel + "_" + i + "_"  + classNameSuffix;
         
-        var generatedFile = _fileContentGenerator.Generate(localClassNameSuffix);
-        var filePath = rootFolder + @"\" + generatedFile.Name;
-        myFileCreator.Create(filePath, generatedFile.Content);
+        var files = _fileContentGenerator.Generate(localClassNameSuffix);
+        foreach (var file in files)
+        {
+          var filePath = rootFolder + @"\" + file.Name;
+          myFileCreator.Create(filePath, file.Content);
+        }
       }
 
       if (nestingLevel == 0)

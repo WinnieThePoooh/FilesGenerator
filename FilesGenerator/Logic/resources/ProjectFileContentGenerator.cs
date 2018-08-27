@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace FilesGenerator.Logic.resources
 {
@@ -11,14 +12,14 @@ namespace FilesGenerator.Logic.resources
             _projFileContent = new ResourceReader().Read("FilesGenerator.Logic.resources.ProjFileContent.txt");
         }
 
-        public GeneratedFile Generate(string classSuffix)
+        public IEnumerable<GeneratedFile> Generate(string classSuffix)
         {
             var content = _projFileContent
                 .Replace("$projectId", Guid.NewGuid().ToString())
                 .Replace("$rootNamespace", "Namespace" + classSuffix)
                 .Replace("$assemblyName", "AssemblyName" + classSuffix)
                 .Replace("$resourceFileName", "Resource" + classSuffix);
-            return new GeneratedFile("proj" + classSuffix + ".csproj", content);
+            return new [] { new GeneratedFile("proj" + classSuffix + ".csproj", content)};
         }
     }
 }

@@ -33,7 +33,6 @@
   $ProjectReference
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$assemblyName_AssemblyInfo.cs" />
     <Compile Include="$resourceFileName.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

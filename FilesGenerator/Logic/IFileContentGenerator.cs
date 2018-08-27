@@ -1,7 +1,9 @@
-﻿namespace FilesGenerator.Logic
+﻿using System.Collections.Generic;
+
+namespace FilesGenerator.Logic
 {
     public interface IFileContentGenerator
     {
-        GeneratedFile Generate(string classSuffix);
+        IEnumerable<GeneratedFile> Generate(string classSuffix);
     }
 }

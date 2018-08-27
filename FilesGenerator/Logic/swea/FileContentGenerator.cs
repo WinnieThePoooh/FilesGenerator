@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace FilesGenerator.Logic.swea
 {
@@ -14,7 +15,7 @@ namespace FilesGenerator.Logic.swea
       _warningsCount = warningsCount;
       _todoCount = todoCount;
     }
-    public GeneratedFile Generate(string classSuffix)
+    public IEnumerable<GeneratedFile> Generate(string classSuffix)
     {
       var builder = new StringBuilder();
       builder.AppendLine("namespace GeneratedFiles" + classSuffix);
@@ -33,7 +34,7 @@ namespace FilesGenerator.Logic.swea
       builder.AppendLine("  }");
       builder.AppendLine("]");
 
-      return new GeneratedFile("file" + classSuffix + ".cs", builder.ToString());
+      return new [] { new GeneratedFile("file" + classSuffix + ".cs", builder.ToString())};
     }
   }
 }
