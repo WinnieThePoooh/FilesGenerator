@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid><$projectId>></ProjectGuid>
+    <ProjectGuid>$projectId</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>$rootNamespace</RootNamespace>
@@ -33,7 +33,7 @@
   $ProjectReference
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$assemblyNameAssemblyInfo.cs" />
+    <Compile Include="$assemblyName_AssemblyInfo.cs" />
     <Compile Include="$resourceFileName.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

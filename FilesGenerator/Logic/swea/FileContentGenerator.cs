@@ -14,7 +14,7 @@ namespace FilesGenerator.Logic.swea
       _warningsCount = warningsCount;
       _todoCount = todoCount;
     }
-    public string Generate(string classSuffix)
+    public GeneratedFile Generate(string classSuffix)
     {
       var builder = new StringBuilder();
       builder.AppendLine("namespace GeneratedFiles" + classSuffix);
@@ -33,7 +33,7 @@ namespace FilesGenerator.Logic.swea
       builder.AppendLine("  }");
       builder.AppendLine("]");
 
-      return builder.ToString();
+      return new GeneratedFile("file" + classSuffix + ".cs", builder.ToString());
     }
   }
 }

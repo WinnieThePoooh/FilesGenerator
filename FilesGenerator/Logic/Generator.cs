@@ -39,9 +39,10 @@
       for (var i = 0; i < filesInEachFolder; i++)
       {
         var localClassNameSuffix = nestingLevel + "_" + i + "_"  + classNameSuffix;
-        var filePath = rootFolder + @"\file" + localClassNameSuffix + ".cs";
-        var content = _fileContentGenerator.Generate(localClassNameSuffix);
-        myFileCreator.Create(filePath, content);
+        
+        var generatedFile = _fileContentGenerator.Generate(localClassNameSuffix);
+        var filePath = rootFolder + @"\" + generatedFile.Name;
+        myFileCreator.Create(filePath, generatedFile.Content);
       }
 
       if (nestingLevel == 0)

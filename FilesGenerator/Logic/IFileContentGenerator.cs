@@ -2,6 +2,6 @@
 {
     public interface IFileContentGenerator
     {
-        string Generate(string classSuffix);
+        GeneratedFile Generate(string classSuffix);
     }
 }

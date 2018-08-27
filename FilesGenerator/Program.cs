@@ -8,8 +8,8 @@ namespace FilesGenerator
   {
     private static void Main(string[] args)
     {
-      //var fileContentGenerator = new FileContentGenerator(100, 100, 0);
-      var fileContentGenerator = new ProjectFileContentGenerator();
+      var fileContentGenerator = new FileContentGenerator(5, 5, 5);
+      //var fileContentGenerator = new ProjectFileContentGenerator();
       var generator = new Generator(fileContentGenerator);
       var rootFolder = @"C:\logs\generated";
       generator.Generate(rootFolder, 1, 1, 1);

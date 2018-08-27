@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Logic\FileCreator.cs" />
     <Compile Include="Logic\FolderCreator.cs" />
+    <Compile Include="Logic\GeneratedFile.cs" />
     <Compile Include="Logic\Generator.cs" />
     <Compile Include="Logic\IFileContentGenerator.cs" />
     <Compile Include="Logic\ResourceReader.cs" />

@@ -1,3 +1,5 @@
+using System;
+
 namespace FilesGenerator.Logic.resources
 {
     public class ProjectFileContentGenerator : IFileContentGenerator
@@ -9,9 +11,14 @@ namespace FilesGenerator.Logic.resources
             _projFileContent = new ResourceReader().Read("FilesGenerator.Logic.resources.ProjFileContent.txt");
         }
 
-        public string Generate(string classSuffix)
+        public GeneratedFile Generate(string classSuffix)
         {
-            return _projFileContent;
+            var content = _projFileContent
+                .Replace("$projectId", Guid.NewGuid().ToString())
+                .Replace("$rootNamespace", "Namespace" + classSuffix)
+                .Replace("$assemblyName", "AssemblyName" + classSuffix)
+                .Replace("$resourceFileName", "Resource" + classSuffix);
+            return new GeneratedFile("proj" + classSuffix + ".csproj", content);
         }
     }
 }
